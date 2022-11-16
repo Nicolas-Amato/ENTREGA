@@ -1,0 +1,24 @@
+<form action="" method="get"> 
+
+   
+    <p>         Consulta info. PROFESORES              </p>
+
+    
+    <input type="text" name="profesor" id="profesor">
+  
+    <input type='submit' value='enviar'></button> 
+</form>
+
+{% if  consulta_profesor %}
+
+   <ul>
+    {% for profesor in consulta_profesor %}
+        <li> deporte a cargo del profesor {{profesor.nombre}} </li>
+    {% endfor %}
+   </ul>
+
+{% else %}
+    <p>no hay datos ingresados...</p>
+
+{% endif %}   
+
