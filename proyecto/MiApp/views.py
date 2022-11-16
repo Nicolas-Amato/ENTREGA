@@ -11,21 +11,32 @@ def index(request):
 
 
 def buscar_profesor(request):
+   data = request.GET.get('nombre', '')
 
-   consulta_profesor = profesor(deporte=['deporte'], nombre=['nombre'], DNI=['DNI'])
-   
-   return render(request, 'consulta_profesor.html' ,{'profesor':[consulta_profesor]})
+   error = ''
 
-def buscar_CLUB(request):
+   if data:
+      try:
+         PROD = profesor.objects.get(nombre = data)
+         return render(request, 'consulta_profesor.html', {'PROD':PROD, 'nombre':data})
+      except Exception as exc:
+         error = 'no hay resultados'
+   return render(request, 'consulta_profesor.html', {'error':error})
 
-   if request.GET.get('deporte', False):
-      deporte = request.GET['deporte']
-      CLUB = club_deportivo.objects.filter(club_deportivo__icontains=club_deportivo)
-      return render(request, 'consulta_deporte.html', {'CLUB': CLUB})
 
-   else:
-      respuesta = 'no hay datos ingresados...'
-      return render(request, 'consulta_deporte.html', {'respuesta': respuesta})
+def buscar_DEPORTE(request):
+   data = request.GET.get('deporte', '')
+
+   error = ''
+
+   if data:
+      try:
+         CLUB = club_deportivo.objects.get(deporte = data)
+         return render(request, 'consulta_deporte.html', {'CLUB':CLUB, 'nombre':data})
+      except Exception as exc:
+         error = 'no hay resultados'
+   return render(request, 'consulta_deporte.html', {'error':error})
+
 
 
 
@@ -97,3 +108,6 @@ def nuevo_alumno(request):
 #consulta_profesor = profesor(deporte=['deporte'], nombre=['nombre'], DNI=['DNI'])
    
 #  return render(request, 'consulta_profesor.html' ,{'profesor':[consulta_profesor]})
+
+
+      

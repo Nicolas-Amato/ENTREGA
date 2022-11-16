@@ -7,14 +7,14 @@
   <input type='submit' value='enviar'></button> 
 </form>
 
-{% if CLUB %}
-   <ul>
-    {% for deporte  in CLUB %}
-      <li> deporte {{deporte.deporte}} a cargo del profesor {{nombre.deporte}} </li>
-    {% endfor %}
-   </ul>
+{% if  CLUB %}
 
-{% else %}
-    <p>no hay datos ingresados...</p>
-{% endif %}   
+   <ul>
+        <li> deporte a cargo del profesor {{CLUB.nombre}} </li>
+   </ul>
+{% endif %}
+
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
 

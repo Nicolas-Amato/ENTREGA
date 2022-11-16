@@ -4,7 +4,7 @@ from .forms import club_deportivoForm, profesorForm, alumnoForm
 
 
 urlpatterns = [
-    path('index/', index),
+    path('', index),
     path('nuevo_deporte/', nuevo_deporte, name='Nuevo Deporte'),
     path('nuevo_profesor/', nuevo_profesor, name='Nuevo Profesor'),
     path('nuevo_alumno/', nuevo_alumno, name='Nuevo Alumno'),

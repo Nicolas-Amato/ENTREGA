@@ -4,21 +4,18 @@
     <p>         Consulta info. PROFESORES              </p>
 
     
-    <input type="text" name="profesor" id="profesor">
+    <input type="text" name="nombre" id="profesor">
   
     <input type='submit' value='enviar'></button> 
 </form>
 
-{% if  consulta_profesor %}
+{% if  PROD %}
 
    <ul>
-    {% for profesor in consulta_profesor %}
-        <li> deporte a cargo del profesor {{profesor.nombre}} </li>
-    {% endfor %}
+        <li> deporte a cargo del profesor {{PROD.nombre}} </li>
    </ul>
+{% endif %}
 
-{% else %}
-    <p>no hay datos ingresados...</p>
-
-{% endif %}   
-
+{% if error %}
+    <p>{{error}}</p>
+{% endif %}
